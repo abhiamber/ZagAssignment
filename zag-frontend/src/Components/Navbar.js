@@ -4,7 +4,6 @@ import React from "react";
 import Rectangleuser from "../Images/Rectangleuser.png";
 import menu from "../Images/menu.png";
 
-
 const Navbar = () => {
   return (
     <Box

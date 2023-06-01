@@ -13,6 +13,8 @@ const Footer = () => {
       alignItems={"center"}
       justifyContent={"space-around"}
       flexWrap={"wrap"}
+      ml="-25px"
+      mr="-25px"
       background="#FFFFFF"
       boxShadow="0px -2px 7px rgba(0, 0, 0, 0.1)"
       borderRadius="30px 30px 0px 0px"

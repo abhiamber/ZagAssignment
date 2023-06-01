@@ -2,9 +2,11 @@ import { Box, Button, Image, Input, Text, useToast } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { LockIcon } from "@chakra-ui/icons";
 import process from "../Images/process.png";
+import received from "../Images/received.png";
 
 // import { Icon, BiCreditCardAlt } from "@chakra-ui/react";
 import { BiCreditCardAlt } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
 
 const Payment = () => {
   const [card, setCard] = useState({
@@ -14,22 +16,41 @@ const Payment = () => {
     cvv: "",
   });
   const toast = useToast();
+  let [pay, setPay] = useState(false);
+  let navigate = useNavigate();
 
+  // ********payment handing***********
   const handleOrder = () => {
+    setPay(true);
     setTimeout(() => {
       toast({
-        position: "bottom-left",
+        position: "top-center",
         render: () => (
-          <Box color="white" p={3} bg="blue.500">
+          <Box color="white" broder="0px" pt="80px">
             <Image src={process} />
           </Box>
         ),
       });
-    }, 500);
-    setTimeout(() => {}, 3000);
+    }, 1500);
+    setTimeout(() => {
+      toast({
+        position: "top-center",
+        render: () => (
+          <Box color="white" broder="0px" pt="80px">
+            <Image src={received} />
+          </Box>
+        ),
+      });
+    }, 8000);
 
-    console.log(card, card.cardno.length);
+    setTimeout(() => {
+      navigate("/");
+    }, 14000);
+
+    // console.log(card, card.cardno.length);
   };
+
+  // ********card validation***********
 
   const cc_format = (value) => {
     const v = value.replace(/[^0-9]/gi, "").substr(0, 16);
@@ -69,6 +90,9 @@ const Payment = () => {
     return expDateFormatter;
   };
 
+  if (pay) {
+    return;
+  }
   return (
     <Box bg="pink.50" minHeight={"100vh"} w="100%">
       <Box

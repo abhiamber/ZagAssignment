@@ -1,5 +1,5 @@
 import { Box, Button, Image, Input, Text, useToast } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { LockIcon } from "@chakra-ui/icons";
 import process from "../Images/process.png";
 import received from "../Images/received.png";
@@ -18,6 +18,7 @@ const Payment = () => {
   const toast = useToast();
   let [pay, setPay] = useState(false);
   let navigate = useNavigate();
+  let [btnDisabled, setBtnDisabled] = useState(true);
 
   // ********payment handing***********
   const handleOrder = () => {
@@ -47,7 +48,12 @@ const Payment = () => {
       navigate("/");
     }, 14000);
 
-    // console.log(card, card.cardno.length);
+    // console.log(
+    //   card.name.length,
+    //   card.cvv.length,
+    //   card.expirydt.length,
+    //   card.cardno.length
+    // );
   };
 
   // ********card validation***********
@@ -90,9 +96,33 @@ const Payment = () => {
     return expDateFormatter;
   };
 
+  useEffect(() => {
+    if (
+      card.cardno.length === 26 &&
+      card.name !== null &&
+      card.cvv.length === 3
+    ) {
+      if (card.expirydt.length === 5 || card.expirydt.length === 6) {
+        setBtnDisabled(false);
+      } else {
+        setBtnDisabled(true);
+      }
+    } else {
+      setBtnDisabled(true);
+    }
+  }, [card]);
+  // console.log(btnDisabled);
+  // console.log(
+  //   card.name.length,
+  //   card.cvv.length,
+  //   card.expirydt.length,
+  //   card.cardno.length
+  // );
+
   if (pay) {
     return;
   }
+
   return (
     <Box bg="pink.50" minHeight={"100vh"} w="100%">
       <Box
@@ -173,6 +203,7 @@ const Payment = () => {
             _hover={{ bg: "#e40980" }}
             color="white"
             onClick={handleOrder}
+            isDisabled={btnDisabled}
           >
             PAY NOW
           </Button>

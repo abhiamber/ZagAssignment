@@ -3,8 +3,14 @@ import React from "react";
 import image from "../Images/image.png";
 import love from "../Images/love.png";
 import shoes from "../Images/shoes.png";
+import { useNavigate } from "react-router-dom";
 
 const ProductList = () => {
+  let navigate = useNavigate();
+  let handleProductNavigate = () => {
+    navigate("/product");
+  };
+
   return (
     <Box
       fontFamily={"'Poppins'"}
@@ -17,6 +23,7 @@ const ProductList = () => {
         height={"240px"}
         w="155px"
         position={"relative"}
+        onClick={handleProductNavigate}
       >
         <Image src={image} alt="image" />
         <Image
@@ -39,6 +46,7 @@ const ProductList = () => {
         height={"240px"}
         w="155px"
         position={"relative"}
+        onClick={handleProductNavigate}
       >
         <Image src={shoes} alt="shoes" />
         <Image

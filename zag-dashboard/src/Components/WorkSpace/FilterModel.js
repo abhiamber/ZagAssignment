@@ -60,7 +60,6 @@ const FilterModel = ({ FilterFunction }) => {
         borderRadius="10px"
       >
         <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <RadioGroup onChange={setValue} value={value}>

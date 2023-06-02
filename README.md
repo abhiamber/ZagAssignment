@@ -39,10 +39,11 @@ Images and all necessary information required or user intrested to look at.
 
 
 
- ### Product Detail Page
- This the Product detail page where user can see the details of order and add the product to cart.
+ ### Dashboard view
+
  
-![Screenshot (248)](https://user-images.githubusercontent.com/102507444/213933563-a8377ebc-3ff8-4a26-97d1-5b5a13c6d3df.png)
+![image](https://github.com/abhiamber/ZagAssignment/assets/102507444/e65b5713-6240-426e-bc94-3ec16a0745d6)
+
 
 
 

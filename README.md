@@ -27,9 +27,10 @@ Clone the Repository from Github. Then do the following steps:
 ## Screenshots
 
  ### Home Page
- This is the landing page when user visits for the website for first time.
 
-![App Screenshot](https://user-images.githubusercontent.com/102507444/213928090-cbaf214f-8d71-4e0a-b569-4fc2a0e71889.png)
+
+![image](https://github.com/abhiamber/ZagAssignment/assets/102507444/3c681119-9838-4bc3-a947-aa347e205d77)
+
 
 
  ### Product Page

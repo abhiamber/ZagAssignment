@@ -29,7 +29,37 @@ let obj = { McDonalds: mac, Tesla: tesla, GM: gm };
 const MainTable = () => {
   let [dashData, setDashData] = useState(data);
   const { isOpen, onOpen, onClose } = useDisclosure();
-  console.group(dashData);
+  console.log(dashData);
+
+  let SortingFunction = (id) => {
+    if (id === "1") {
+      let dataa = data.sort((a, b) => a.amount - b.amount);
+      setDashData([...dataa]);
+    } else if (id === "2") {
+      let dataa = data.sort((b, a) => a.amount - b.amount);
+      setDashData([...dataa]);
+    }
+  };
+
+  let FilterFunction = (id) => {
+    console.log(typeof id, id);
+    if (id === "1") {
+      let datas = data.filter((elem) => elem.status === "confirmed");
+      setDashData([...datas]);
+    } else if (id === "2") {
+      let datas = data.filter((elem) => elem.status === "delivered");
+      setDashData([...datas]);
+    } else if (id === "3") {
+      let datas = data.filter((elem) => elem.status === "refund");
+      setDashData([...datas]);
+    } else if (id === "4") {
+      let datas = data.filter((elem) => elem.status === "pending");
+      setDashData([...datas]);
+    } else {
+      setDashData([...data]);
+    }
+  };
+
   return (
     <Box mt="22px">
       <TableContainer>
@@ -50,11 +80,11 @@ const MainTable = () => {
               </Td>
               {/* filter product on status** */}
               <Td>
-                <FilterModel />
+                <FilterModel FilterFunction={FilterFunction} />
               </Td>
               {/* sort data with amount using modal  */}
               <Td cursor={"pointer"}>
-                <SortModel />
+                <SortModel SortingFunction={SortingFunction} />
               </Td>
               {/*  placed on table data */}
               <Td cursor={"pointer"}>

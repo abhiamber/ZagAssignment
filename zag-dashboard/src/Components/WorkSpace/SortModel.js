@@ -1,5 +1,5 @@
-import { Box, Text } from "@chakra-ui/react";
-import React from "react";
+import { Box, Radio, RadioGroup, Stack, Text } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
 import {
   Modal,
   ModalContent,
@@ -8,14 +8,17 @@ import {
   ModalBody,
   ModalCloseButton,
   useDisclosure,
-  Select,
-  Heading,
 } from "@chakra-ui/react";
 import { RiArrowUpSLine } from "react-icons/ri";
 import { HiSelector } from "react-icons/hi";
 
-const SortModel = () => {
-      const { isOpen, onOpen, onClose } = useDisclosure();
+const SortModel = ({ SortingFunction }) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  let [value, setValue] = useState();
+
+  useEffect(() => {
+    SortingFunction(value)
+  }, [value]);
 
   return (
     <Box>
@@ -40,17 +43,33 @@ const SortModel = () => {
         </Text>
       </Box>
 
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal
+        isOpen={isOpen}
+        onClose={onClose}
+        background="#FFFFFF"
+        top="50px"
+        isCentered={true}
+        /* Dialog Shadow */
+
+        boxShadow="0px 2px 24px rgba(0, 0, 0, 0.1)"
+        borderRadius="10px"
+      >
         <ModalContent>
-          <ModalHeader>Sort product acording to amount</ModalHeader>
+          <ModalHeader>Sort product according to amount</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Heading>bhjhbhjjj</Heading>
-            <Select>
-              <option value="">Sort product</option>
-              <option value="asc">asc</option>
-              <option value="dsc">dsc</option>
-            </Select>
+            <RadioGroup onChange={setValue} value={value}>
+              <Stack
+                direction="column"
+                fontFamily="Inter"
+                fontWeight="400"
+                fontSize="14px"
+                lineHeight="17px"
+              >
+                <Radio value="1">asc</Radio>
+                <Radio value="2">dsc</Radio>
+              </Stack>
+            </RadioGroup>
           </ModalBody>
 
           <ModalFooter>

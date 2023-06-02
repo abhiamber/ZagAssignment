@@ -34,9 +34,10 @@ Clone the Repository from Github. Then do the following steps:
 
 
  ### Product Page
-Images and all necessary information required or user intrested to look at.
 
-![Screenshot (245)](https://user-images.githubusercontent.com/102507444/213933374-997845c1-368d-4d41-9568-ecd9e78cd4ce.png)
+
+![image](https://github.com/abhiamber/ZagAssignment/assets/102507444/c97ee6fd-9be8-40fb-8acd-bfc200539ead)
+
 
 
 

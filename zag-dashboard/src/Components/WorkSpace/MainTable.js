@@ -1,21 +1,9 @@
 import React, { useState } from "react";
 import data from "../../db.json";
-import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-  useDisclosure,
-  Button,
-} from "@chakra-ui/react";
 
 import { Box, Image, Text } from "@chakra-ui/react";
 import { Table, Thead, Tbody, Tr, Td, TableContainer } from "@chakra-ui/react";
 import SearchTag from "./SearchTag";
-import { BiDotsHorizontalRounded } from "react-icons/bi";
 import gm from "../../Images/gm.png";
 import mac from "../../Images/mac.png";
 import tesla from "../../Images/tesla.png";
@@ -23,13 +11,13 @@ import { HiSelector } from "react-icons/hi";
 import { RiArrowDownSFill, RiArrowUpSLine } from "react-icons/ri";
 import SortModel from "./SortModel";
 import FilterModel from "./FilterModel";
+import UpdateModel from "./UpdateModel";
 
 let obj = { McDonalds: mac, Tesla: tesla, GM: gm };
 
 const MainTable = () => {
   let [dashData, setDashData] = useState(data);
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  console.log(dashData);
+  // console.log(dashData);
 
   let SortingFunction = (id) => {
     if (id === "1") {
@@ -60,6 +48,21 @@ const MainTable = () => {
     }
   };
 
+  let updateDataFunction = (amount, elem) => {
+    if (!amount) {
+      return;
+    }
+
+    let newData = dashData.map((item) => {
+      if (elem.id === item.id) {
+        return { ...item, amount: amount };
+      } else {
+        return item;
+      }
+    });
+    // console.log(amount, elem);
+    setDashData([...newData]);
+  };
   return (
     <Box mt="22px">
       <TableContainer>
@@ -180,7 +183,7 @@ const MainTable = () => {
                       </Box>
                     </Td>
                     <Td textAlign={"cneter"} color="#70768C">
-                      {elem.status}
+                      {elem.activeOrders}
                     </Td>
                     <Td textAlign={"cneter"} color="#70768C">
                       {elem.amount}
@@ -198,26 +201,10 @@ const MainTable = () => {
                       color="#70768C"
                       cursor={"pointer"}
                     >
-                      <Text onClick={onOpen}>
-                        {" "}
-                        <BiDotsHorizontalRounded />
-                      </Text>
-
-                      <Modal isOpen={isOpen} onClose={onClose}>
-                        <ModalOverlay />
-                        <ModalContent>
-                          <ModalHeader>Modal Title</ModalHeader>
-                          <ModalCloseButton />
-                          <ModalBody></ModalBody>
-
-                          <ModalFooter>
-                            <Button colorScheme="blue" mr={3} onClick={onClose}>
-                              Close
-                            </Button>
-                            <Button variant="ghost">Secondary Action</Button>
-                          </ModalFooter>
-                        </ModalContent>
-                      </Modal>
+                      <UpdateModel
+                        updateDataFunction={updateDataFunction}
+                        elem={elem}
+                      />
                     </Td>
                   </Tr>
                 );

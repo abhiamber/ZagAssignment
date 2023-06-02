@@ -6,11 +6,11 @@ ReactJS, JavaScript, Chakra-UI,
 
 
 ## Deployment Link Mobile View
-https://frontend-eight-tawny-20.vercel.app
+https://zag-frontend.vercel.app/
 
 
 ## Deployment Link Dashboard View
-https://frontend-eight-tawny-20.vercel.app
+https://zag-dashboard.vercel.app/
 
 
 

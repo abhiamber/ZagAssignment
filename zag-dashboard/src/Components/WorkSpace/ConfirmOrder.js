@@ -1,11 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { Text, Box, Heading } from "@chakra-ui/react";
+import React from "react";
+import { Text, Box } from "@chakra-ui/react";
 
 function ConfirmOrder() {
-  const [isLoading, setLoading] = useState(false);
-
-  useEffect(() => {}, []);
-
   return (
     <Box
       mt="17px"
@@ -21,9 +17,17 @@ function ConfirmOrder() {
       lineHight=" 22px"
       justifyContent={"space-between"}
     >
-      <Box>
+      <Box
+        display={"flex"}
+        alignContent={"center"}
+        alignItems={"center"}
+        gap="15px"
+      >
         <Text textAlign={"left"}> Confirmed </Text>
-        <Text textAlign={"left"}> </Text>
+        <Text textAlign={"left"} color="rgba(47, 47, 47, 0.4)">
+          {" "}
+          289{" "}
+        </Text>
       </Box>
       <Box
         background="#EFF0F6"

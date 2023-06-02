@@ -8,7 +8,7 @@ function SearchTag() {
       display={"flex"}
       alignItems={"center"}
       justifyContent={"space-between"}
-      mt="24px"
+      mt="5px"
       gap="17px"
       ml="10px"
     >
